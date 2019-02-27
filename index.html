@@ -13,9 +13,7 @@
         <script>
             function doRefresh() {
                 setTeam();
-                if (jQuery(".autoRefresh:checked").val() == "autoRefresh") {
-                    refreshTBA();
-                }
+                refreshTBA();
             }
             
             function doAutoRefresh() {
@@ -57,9 +55,9 @@
         
         <br><br>
         
-        <div class="timeArea" style="font-size: small">
-            <b>Last Updated:</b> <span id="lastUpdated"><i>Never</i></span><br>
-            <input type="checkbox" class="autoRefresh" value="autoRefresh"> Auto-Refresh
+        <div class="statusArea" style="font-size: small">
+            <input type="checkbox" class="autoRefresh" value="autoRefresh"> Auto-Refresh<br>
+            <b>Last Updated:</b> <span id="lastUpdated"><i>Never</i></span>
         </div>
     
     </body>
