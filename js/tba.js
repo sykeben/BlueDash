@@ -1,8 +1,13 @@
+// VARIABLES
+var baseURL = "https://www.thebluealliance.com/api/v3/";
+var args = "?X-TBA-Auth-Key="+getApiKey();
+
 function refreshTBA() {
-    // VARIABLES
-    var baseURL = "https://www.thebluealliance.com/api/v3/";
-    var args = "?X-TBA-Auth-Key="+getApiKey();
-    var validTeam = false;
+    // RELOAD VARIABLES
+    var currentDate = new Date(); var currentYear = currentDate.getFullYear();
+    
+    // LAST REFRESHED TIME
+    document.getElementById("lastUpdated").innerHTML = currentDate.toTimeString();
     
     // DATA STREAM STATUS
     jQuery.ajax({
@@ -17,23 +22,68 @@ function refreshTBA() {
             }
         },
         error: function(data) {
+            element = document.getElementById("apiStatus");
+            element.innerHTML = "<i>[Error]</i>"
             alert("[ERROR]\nCannot get data.");
         }
     });
     
     // TEAM NAME (AND TEAM # CHECKER)
     jQuery.ajax({
-        url: baseURL+"team/frc"+getTeam()+args,
+        url: baseURL+"team/frc"+getTeam().toString()+args,
         dataType: "json",
         success: function(json) {
             element = document.getElementById("teamName");
             element.innerHTML = json.name;
-            validTeam = true;
         },
         error: function(data) {
-            element = document.getElementById("teamName");
-            element.innerHTML = "[Invalid Team]"
-            alert("[ERROR]\nInvalid Team #.");
+            if (document.getElementById("apiStatus").innerHTML != "<i>[Error]</i>") {
+                element = document.getElementById("teamName");
+                element.innerHTML = "<i>[Invalid Team]</i>";
+                alert("[ERROR]\nInvalid Team #.");
+            }
         }
     });
+    
+    // REST OF DATA (ONLY IF TEAM IS VALID)
+    jQuery.ajax({
+        url: baseURL+"team/frc"+getTeam().toString()+args,
+        dataType: "json",
+        success: function(fkJson) {
+            
+            // CURRENT EVENT
+            jQuery.ajax({
+                url: baseURL+"team/frc"+getTeam().toString()+"/events/"+currentYear+"/simple"+args,
+                dataType: "json",
+                success: function(json) {
+                    var eventDate; var formattedEventDate; var timeDiff; var inEvent;
+                    element = document.getElementById("currentEvent"); element.innerHTML = "";
+                    for (var i = 0; i < json.length; i++) {
+                        processEvent = json[i];
+                        eventStartDate = new Date(convertEventDate(processEvent.start_date));
+                        eventEndDate = new Date(convertEventDate(processEvent.end_date));
+                        if (eventStartDate.getTime() <= currentDate.getTime() && eventEndDate.getTime() >= currentDate.getTime()) {
+                            inEvent = true; currentEvent = processEvent;
+                            break;
+                        }
+                    }
+                    if (inEvent) {
+                        element.innerHTML = currentEvent.name;
+                    } else {
+                        element.innerHTML = "<i>Not currently in an event.</i>";
+                    }
+                },
+                error: function(data) {
+                    element = document.getElementById("currentEvent");
+                    element.innerHTML = "";
+                }
+            });
+            
+        }
+    });
+}
+
+function convertEventDate(rawString) {
+    rawDate = rawString.split("-");
+    return rawDate[1] + "/" + rawDate[2] + "/" + rawDate[0];
 }

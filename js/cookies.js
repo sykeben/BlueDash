@@ -26,11 +26,9 @@ function getCookie(c_name) {
 }
 
 function setApiKey() {
-    buttonElement = document.getElementById("apiSetter");
-    buttonElement.innerHTML = "Setting..."
     var newKey = document.getElementsByName("apiKeyBox")[0].value;
     setCookie("apiKey", newKey);
-    buttonElement.innerHTML = "Set API Key"
+    location.reload();
 }
 
 function getApiKey() {
