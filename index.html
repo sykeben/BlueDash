@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <title>BlueDash</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css">
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="js/cookies.js"></script>
+        <script src="js/tba.js"></script>
+        
+        <script>
+            function doRefresh() {
+                buttonElement = document.getElementById("teamSetter");
+                buttonElement.innerHTML = "Refreshing...";
+                setTeam();
+                refreshTBA();
+                buttonElement.innerHTML = "Refresh";
+            }
+        </script>
+        
+    </head>
+    
+    <body>
+        
+        <div style="font-size: small">
+            API Key: <input type="text" name="apiKeyBox"> <button onclick="setApiKey()" id="apiSetter">Set API Key</button><br>
+            Team No: <input type="number" name="teamBox"> <button onclick="doRefresh()" id="teamSetter">Refresh</button><br>
+            <i>This key (and the team number) will be saved in a cookie for further use.</i><br><br>
+        </div>
+        
+        <b>API Status: </b><span id="apiStatus">[No data yet]</span><br>
+        <b>Team Name: </b><span id="teamName"></span>
+    
+    </body>
+    
+</html>
