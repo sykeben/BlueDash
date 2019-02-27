@@ -39,27 +39,33 @@
     
     <body>
         
-        <div class="settings">
-            <table>
-                <tr>
-                    <td>API Key: </td>
-                    <td><input type="text" name="apiKeyBox"> </td>
-                    <td width=115><button type="button" onclick="setApiKey()" id="apiSetter">Set API Key</button></td>
-                    <td width=150><input type="checkbox" class="autoRefresh" value="autoRefresh"> Auto-Refresh</td>
-                </tr>
-                <tr>
-                    <td>Team No: </td>
-                    <td><input type="number" name="teamBox"> </td>
-                    <td><button type="button" onclick="doRefresh()" id="teamSetter">Refresh</button></td>
-                    <td style="padding-left: 10px;"><b>Last Updated:</b> <span id="lastUpdated"><i>Never</i></span></td>
-                </tr>
-            </table>
-            <i>This key (and the team number) will be saved in a cookie for further use.</i>
+        <div id="topDiv">
+            
+            <a href="https://www.thebluealliance.com/"><div id="logoDiv"></div></a>
+        
+            <div id="settingDiv">
+                <table>
+                    <tr>
+                        <td>API Key: </td>
+                        <td><input type="text" name="apiKeyBox"> </td>
+                        <td width=115><button type="button" onclick="setApiKey()" id="apiSetter">Set API Key</button></td>
+                        <td width=150><input type="checkbox" class="autoRefresh" value="autoRefresh"> Auto-Refresh</td>
+                    </tr>
+                    <tr>
+                        <td>Team No: </td>
+                        <td><input type="number" name="teamBox"> </td>
+                        <td><button type="button" onclick="doRefresh()" id="teamSetter">Refresh</button></td>
+                        <td style="padding-left: 10px;"><b>Last Updated:</b> <span id="lastUpdated"><i>Never</i></span></td>
+                    </tr>
+                </table>
+                <i>This key (and the team number) will be saved in a cookie for further use.</i>
+            </div>
+            
         </div>
         
         <br><br>
         
-        <div class="tbadata">
+        <div id="dataDiv">
             <table>
                 <tr>
                     <td width=125><b>API Status:</b> </td>
