@@ -1,18 +1,17 @@
-.simple-input {
-    display: block;
+body {
     padding: 5px;
-    border: 4px solid #F1B720;
-    border-radius: 5px;
-    color: #333;
-    transition: all 0.3s ease-out;
+    font-family: sans-serif;
 }
 
-.simple-input:hover {
-    border-radius: 8px
+.settings {
+    display: inline-block;
+    padding: 7.5px;
+    border-color: cadetblue; border-style: solid; border-radius: 5px;
+    background-color: cadetblue;
+    font-size: small; color: white;
 }
 
-.simple-input:focus {
-    outline: none;
-    border-radius: 8px;
-    border-color: #EBD292;
+.tbadata {
+    font-size: medium;
+    line-height: 175%;
 }

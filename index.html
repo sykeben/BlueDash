@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
     
     <head>
         
-        <title>BlueDash</title>
         <link rel="stylesheet" type="text/css" href="css/common.css">
         
+        <title>BlueDash</title>
+        
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="js/cookies.js"></script>
-        <script src="js/tba.js"></script>
+        <script src="js/cookies.js"></script><script src="js/tba.js"></script>
         
         <script>
             function doRefresh() {
@@ -39,25 +39,41 @@
     
     <body>
         
-        <div class="settingsArea" style="font-size: small">
-            API Key: <input type="text" name="apiKeyBox"> <button onclick="setApiKey()" id="apiSetter">Set API Key</button><br>
-            Team No: <input type="number" name="teamBox"> <button onclick="doRefresh()" id="teamSetter">Refresh</button><br>
+        <div class="settings">
+            <table>
+                <tr>
+                    <td>API Key: </td>
+                    <td><input type="text" name="apiKeyBox"> </td>
+                    <td width=115><button type="button" onclick="setApiKey()" id="apiSetter">Set API Key</button></td>
+                    <td width=150><input type="checkbox" class="autoRefresh" value="autoRefresh"> Auto-Refresh</td>
+                </tr>
+                <tr>
+                    <td>Team No: </td>
+                    <td><input type="number" name="teamBox"> </td>
+                    <td><button type="button" onclick="doRefresh()" id="teamSetter">Refresh</button></td>
+                    <td style="padding-left: 10px;"><b>Last Updated:</b> <span id="lastUpdated"><i>Never</i></span></td>
+                </tr>
+            </table>
             <i>This key (and the team number) will be saved in a cookie for further use.</i>
         </div>
         
         <br><br>
         
-        <div class="dataArea" style="font-size: medium">
-            <b>API Status:</b> <span id="apiStatus">[No data yet]</span><br>
-            <b>Team Name:</b> <span id="teamName"></span><br>
-            <b>Current Event:</b> <span id="currentEvent"></span>
-        </div>
-        
-        <br><br>
-        
-        <div class="statusArea" style="font-size: small">
-            <input type="checkbox" class="autoRefresh" value="autoRefresh"> Auto-Refresh<br>
-            <b>Last Updated:</b> <span id="lastUpdated"><i>Never</i></span>
+        <div class="tbadata">
+            <table>
+                <tr>
+                    <td width=125><b>API Status:</b> </td>
+                    <td><span id="apiStatus">[No data yet]</span></td>
+                </tr>
+                <tr>
+                    <td><b>Team Name:</b> </td>
+                    <td><span id="teamName"></span></td>
+                </tr>
+                <tr>
+                    <td><b>Current Event:</b> </td>
+                    <td><span id="currentEvent"></span></td>
+                </tr>
+            </table>
         </div>
     
     </body>

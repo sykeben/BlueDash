@@ -7,7 +7,9 @@ function refreshTBA() {
     var currentDate = new Date(); var currentYear = currentDate.getFullYear();
     
     // LAST REFRESHED TIME
-    document.getElementById("lastUpdated").innerHTML = currentDate.toTimeString();
+    timeElement = document.getElementById("lastUpdated");
+    timeElement.innerHTML = currentDate.toLocaleTimeString().split(" ")[0];
+    
     
     // DATA STREAM STATUS
     jQuery.ajax({
@@ -23,8 +25,10 @@ function refreshTBA() {
         },
         error: function(data) {
             element = document.getElementById("apiStatus");
-            element.innerHTML = "<i>[Error]</i>"
-            alert("[ERROR]\nCannot get data.");
+            element.innerHTML = "<i>[Error]</i>";
+            if (!(jQuery(".autoRefresh:checked").val() == "autoRefresh")) {
+                alert("[ERROR]\nCannot get data.");
+            }
         }
     });
     
@@ -40,7 +44,9 @@ function refreshTBA() {
             if (document.getElementById("apiStatus").innerHTML != "<i>[Error]</i>") {
                 element = document.getElementById("teamName");
                 element.innerHTML = "<i>[Invalid Team]</i>";
-                alert("[ERROR]\nInvalid Team #.");
+                if (!(jQuery(".autoRefresh:checked").val() == "autoRefresh")) {
+                    alert("[ERROR]\nInvalid team #.");
+                }
             }
         }
     });
