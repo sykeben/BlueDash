@@ -1,0 +1,12 @@
+[BLUEDASH ELEMENT DEFINITIONS]
+
+~- MAIN DASHBOARD ~-
+
+
+~- SETTINGS ~-
+apiBox - Textbox for api key
+apiStatus - Check or Cross depending on status of the key (does it work?), to the right of apiBox
+teamBox - Numberbox for the team number, below apiBox
+streamMenu - Dropdown for stream source, below teamBox (preferbly with extra top padding)
+autoUpdateCheck - Checkbox to enable/disable autoupdating, below steamMenu
+autoUpdateDelay - Numberbox for the autoupdate delay in sec, to the right of autoUpdateCheck
