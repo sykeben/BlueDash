@@ -1,12 +1,35 @@
 [BLUEDASH ELEMENT DEFINITIONS]
 
 ~- MAIN DASHBOARD ~-
+lastMatchPanel - Panel containing info about last match
+rankingPanel - Panel containing info about current rank
+nextMatchPanel - Panel containing info about next match
+streamPanel - Panel containing the stream (or a message if no stream is selcted)
+
+lastRed1, lastRed2, lastRed3 - Last match's red alliance teams, inside table on left, inside lastMatchPanel
+lastBlu1, lastBlu2, lastBlu3 - Last match's blue alliance teams, inside table on right, inside lastMatchPanel
+
+redScore, bluScore - Scores from last match, to the right of the alliance team #s table, inside lastMatchPanel
+
+pointTotals - <p> that can be modified to show point totals and ranking results
+
+ranking1, ranking2, ranking3 - #s for rank above us, our rank, and rank below us, inside rankingPanel, on the left
+team1, team2, team3 - Teams for one above us, us, and one below us, inside rankingPanel, on the right
+
+nextRed1, nextRed2, nextRed3 - Next match's red alliance teams, inside table on left, inside lastMatchPanel
+nextBlu1, nextBlu2, nextBlu3 - Next match's blue alliance teams, inside table on right, inside lastMatchPanel
+
+streamName - name of stream, on top of the streamPanel
+streamURL - embeddable URL of the stream to be shown
 
 
 ~- SETTINGS ~-
 apiBox - Textbox for api key
 apiStatus - Check or Cross depending on status of the key (does it work?), to the right of apiBox
+
 teamBox - Numberbox for the team number, below apiBox
+
 streamMenu - Dropdown for stream source, below teamBox (preferbly with extra top padding)
+
 autoUpdateCheck - Checkbox to enable/disable autoupdating, below steamMenu
 autoUpdateDelay - Numberbox for the autoupdate delay in sec, to the right of autoUpdateCheck
